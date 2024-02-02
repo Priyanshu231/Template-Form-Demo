@@ -1,0 +1,54 @@
+<div [hidden]="submitted">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h1>Add Hero</h1>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form #addHeroForm="ngForm" (ngSubmit)="submit()">
+            <mat-form-field class="input-field">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" name="name" [(ngModel)]="superHero.name" #name="ngModel" [required]="true">
+                <mat-icon matSuffix>person</mat-icon>
+                <div [hidden]="name.valid || name.pristine">Name is required</div>
+            </mat-form-field>
+            <mat-form-field class="input-field">
+                <mat-label>Alter Ego</mat-label>
+                <input matInput type="text" name="alterEgo" [(ngModel)]="superHero.alterEgo" #alterEgo="ngModel"
+                    [required]=" true">
+                <mat-icon matSuffix>adb</mat-icon>
+                <div [hidden]="alterEgo.valid || alterEgo.pristine">Alter Ego is required</div>
+            </mat-form-field>
+            <mat-form-field class="input-field">
+                <mat-label>Super Power</mat-label>
+                <mat-select name="superPower" [(ngModel)]="superHero.superPower" [required]="true">
+                    <mat-option *ngFor="let superPower of superPowers" [value]="superPower">
+                        {{ superPower }}
+                    </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>whatshot</mat-icon>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="button" (click)="addSuperHero()">Add Hero</button>
+            <button mat-raised-button color="accent" type="submit" [disabled]="addHeroForm.invalid">Submit</button>
+        </form>
+    </mat-expansion-panel>
+</div>
+<!-- {{superHero | json}} -->
+
+<div [hidden]="!submitted">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h2>New Super Hero Added</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h3>Name: {{ superHero.name }}</h3>
+            <h3>Alter Ego: {{ superHero.alterEgo }}</h3>
+            <h3>Super Power: {{ superHero.superPower }}</h3>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="accent" class="btn-edit" type="button" (click)="submitted=false">Edit</button>
+    </mat-card>
+</div>

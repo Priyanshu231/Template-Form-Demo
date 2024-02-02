@@ -1,0 +1,36 @@
+h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: royalblue
+}
+
+button {
+    font-size: 1.5rem;
+    margin-right: 20px;
+}
+
+.input-field {
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.input-field div {
+    font-size: 14px;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid green
+}
+
+.ng-invalid[required],
+.ng-invalid.required {
+    border-left: 5px solid red
+}
+
+.btn-edit {
+    width: 10%;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
